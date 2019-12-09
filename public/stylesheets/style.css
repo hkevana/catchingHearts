@@ -1,0 +1,340 @@
+/* SECTIONAL STYLING */ 
+html
+{
+    margin: 0;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    font: 30px 'curlz MT', 'freestyle script', serif;
+    /*'Edwardian Script iTC'*/
+    background-image: linear-gradient(to right, #dd2e44, #e0abba, #f9f9f9, #e0abba, #dd2e44);
+    color: navy;
+}
+body
+{
+    margin: 0;
+    height: 100%;
+}
+#app
+{
+    width: 100vw;
+    height: 100%;
+}
+.landing
+{
+    background-image: url(../images/landing.png);
+    /*color of hearts: #dd2e44 color of ribbons: #e0abba*/
+    margin-left: 40vw;
+    margin-top: 10vh;
+    width: 192px;
+    height: 192px;
+    color: palegoldenrod;
+    text-align: center;
+}
+.quote
+{
+    text-align: center;
+}
+.nav
+{
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    padding: 5px 10px;
+    font-size: 20px;
+    z-index: 3;
+}
+.user-info
+{
+    float: right;
+    margin: 5px 5vw;
+    width: 110px;
+}
+.header
+{
+    width: 100vw;
+    background-color: inherit;
+    z-index: 2;
+}
+.section
+{
+    margin: 0 25vw;
+    height: 75vh;
+    border-radius: 20px;
+    padding: 2px 5px;
+    background-color: ivory;
+    box-shadow: 0 0 8px 4px rgba(0, .4, 0, .2);
+    z-index: 1;
+}
+.profile
+{
+    margin: 20vh 25vw;
+    /*padding: 10px; IF BACKGROUND-COLOR IS ADDED*/
+    width: 50vw;
+    height: 100%;
+    text-align: center;
+}
+.footer
+{
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    background-color: inherit;
+}
+.steps
+{
+    width: 100%;
+    height: 250px;
+    margin-bottom: 10px;
+}
+/* ELEMENTAL STYLING */
+#logo
+{
+    margin-left: 20px;
+    height: 10px;
+    border-radius: 200px;
+    box-shadow: 0 0 8px 4px rgba(0, 0, 0, .4);
+    background-color: ivory;
+    padding: 0 5px;
+}
+h1
+{
+    text-align: center;
+}
+h2 
+{
+    float: left;
+    line-height: 12px;
+    text-indent: 12px;
+}
+h4
+{
+    line-height: 0;
+    padding-right: 7px;
+    float: right;
+}
+h3
+{
+    margin: 0;
+    text-align: center;
+}
+.edward
+{
+    font-family: "edwardian script ITC";
+}
+ul
+{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+li
+{
+    margin: 0;
+    display: inline-block;
+}
+.active
+{
+    font-weight: bold;
+    text-decoration: none;
+}
+label
+{
+    margin-bottom: 5px;
+    width: 100%;
+    font: bold 25px 'freestyle script';
+    text-decoration: underline;
+}
+button
+{
+    padding: 5px 10px;
+    font: bold 12px serif;
+    color: palegoldenrod;
+    background-color: navy;
+}
+button:hover
+{
+    color: navy;
+    background-color: palegoldenrod;
+}
+a
+{
+    color: navy;
+    text-decoration: none;
+}
+a:hover:not(.active)
+{
+    text-decoration: underline;
+}
+.bold
+{
+    font-weight: bold;
+}
+.center
+{
+    text-align: center;
+}
+.normal-font
+{
+    font-style: italic;
+    font-family: serif;
+}
+.profile img
+{
+    float: right;
+    max-height: 200px;
+    margin: 10px;
+    border: 4px solid navy;
+    border-radius: 20px;
+    box-shadow: 0 0 8px 4px rgba(0, .4, 0, .2);
+}
+.section img
+{
+    margin: 10px;
+    float: right;
+    max-width: 200px;
+    max-height: 200px;
+    border: 1px solid purple;
+    box-shadow: 0 0 8px 4px rgba(0, .4, 0, .2);
+}
+p
+{
+    margin: 0;
+    font: italic 15px serif;
+}
+.info
+{
+    padding: 0 5px;
+    text-indent: 20px;
+    margin-top: 10px;
+}
+/* OVERVIEW STYLING */
+#overview-img
+{
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    transition: ease-in-out 1.5s;
+    border-radius: 100px;
+    border: 1px solid black;
+    background-color: lightseagreen;
+    color: navy;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#overview-img:hover
+{
+    border-radius: 20px;
+    width: 192px;
+    height: 192px;
+    background-color: mediumpurple;
+    color: palegoldenrod;
+}
+.overview-list
+{
+    text-align: center;
+}
+.step-1-img { background-image: url('../images/overview/red-apple.png'); }
+.step-2-img { background-image: url('../images/overview/apricot.png'); }
+.step-3-img { background-image: url('../images/overview/web.png'); }
+.step-4-img { background-image: url('../images/overview/phone.png'); }
+/* Login Form */
+.modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  display: table;
+  transition: opacity .3s ease;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.modal-container {
+  width: 500px;
+  margin: 0px auto;
+  padding: 20px 30px;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+  transition: all .3s ease;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.modal-header h1 {
+  margin-bottom: 30px;
+  font-size: 1.5em;
+}
+
+.modal-body {
+  margin: 0;
+}
+
+.modal-body input {
+  margin-bottom: 20px;
+  height: 30px;
+}
+
+.modal-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-default-button {
+  float: right;
+}
+
+/*
+  * The following styles are auto-applied to elements with
+  * transition="modal" when their visibility is toggled
+  * by Vue.js.
+  *
+  * You can easily play with the modal transition by editing
+  * these styles.
+  */
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-leave-active {
+  opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave-active .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+/* Comments */
+.comments
+{
+    font-family: 'freestyle script', serif;
+    margin: 20px 30vw;
+}
+.text-area
+{
+    max-width: calc(50vw - 200px);
+    max-height: 50px;
+}
+.comments-list
+{
+    display: list-item;
+}
+.delete
+{
+    display: none;
+    float: right;
+    margin-right: 10px;
+}
+.comments-list:hover .delete
+{
+    display: block;
+}
+

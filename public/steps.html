@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        <link rel="stylesheet" href="./stylesheets/style.css" />
+        <link rel="icon" type="image/png" href="./images/favicon.png" />
+        
+        <title>4 Steps</title>
+    </head>
+    <body>
+        <div id="app" @keydown.esc="toggleForm">
+            <div class="nav">
+                <div class="user-info">
+                    <p v-if="user">Welcome {{user.username}}<br><a href="#" @click="logout">Logout</a></p>
+                    <p v-else><a href="#" @click="toggleForm">Register or Login</a></p>
+                </div>
+                <div>
+                    <ul>
+                        <li><a href="index.html">Home</a></li> |
+                        <li><a href="steps.html" class="active">Steps</a></li> |
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <transition v-if="showForm" name="modal">
+                <div class="modal-mask">
+                    <div class="modal-wrapper">
+                        <div class="modal-container">
+            
+                            <div class="modal-header">
+                                <h1 class="modal-title">Register or Login</h1>
+                            </div>
+                            <div class="modal-body">
+                                <p v-if="error" class="error">**{{ error }}**</p>
+                                <label>Username</label>
+                                <br>
+                                <input v-model="username">
+                                <br>
+                                <label>Password</label>
+                                <br>
+                                <input type="password" v-model="password">
+                            </div>
+                            <div class="modal-footer">
+                                <button @click="register" type="button">Register</button>
+                                <button @click="login" type="button" class="other">Login</button>
+                                <button @click="toggleForm" type="button" class="close">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </transition>
+            
+            <div class="header">
+                <h1><span id="logo"><img src="./images/logo.png" /></span>Catching Hearts<span id="logo"><img src="./images/logo.png"></img></span></h1>
+            </div>
+            <div class="section">
+                <div class="overview" v-if="displayAll">
+                    <h3>4 Step Process</h3>
+                    <p class="center">
+                        From single man to heart catcher in 4 simple steps!<br>
+                        Hover over the circles below<br>
+                        Click the one you want to view!
+                    </p>
+                    <br>
+                    <ul class="overview-list">
+                        <li>
+                            <div id=overview-img class="step-1-img" @click="displaySteps(0)">
+                                <label>1st step: The Apple</label>
+                                <p>Tart yet Delicious</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div id=overview-img class="step-2-img" @click="displaySteps(1)">
+                                <label>2nd step: The Apricot</label>
+                                <p>How about that pit tho?</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div id=overview-img class="step-3-img" @click="displaySteps(2)">
+                                <label>3rd step: Spider Dance</label>
+                                <p>Quick and Nimble</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div id=overview-img class="step-4-img" @click="displaySteps(3)">
+                                <label>4th step: Call Me</label>
+                                <p>I'll be your spotter through the whole process</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div v-else>
+                    <div id="step_1" class="steps" v-if="displayStep[0].step">
+                        <label>Step 1: The Apple</label><br>
+                        <button @click="goForward(0)">Step 2</button>
+                        <br><button @click="displayOverview">Back</button>
+                        <img src="./images/apple.jpg" alt="apple"/>
+                        <p class="info">
+                            The key to step 1 is to be tart yet sweet. You got 8sec to make a good first impression, 
+                            but if you give too much, she's gonna move on to an apple that's a little more tart.
+                        </p>
+                    </div>
+                    <div id="step_2" class="steps" v-if="displayStep[1].step">
+                        <label>Step 2: The Apricot</label><br>
+                        <button @click="goBack(1)">Step 1</button>
+                        <button @click="goForward(1)">Step 3</button></a>
+                        <br><button @click="displayOverview">Back</button>
+                        <img src="./images/apricots.jpg" />
+                        <p class="info">
+                            Have you ever bitten into an apricot? It's got a nice flavor, huh?
+                            But then you hit the pit right smack in the middle. The trick to this step
+                            is to present your pit to allow her to aid you and create an emotional attachment
+                            through that service.
+                        </p>
+                    </div>
+                    <div id="step_3" class="steps" v-if="displayStep[2].step">
+                        <label>Step 3: The Spider Dance</label><br>
+                        <button @click="goBack(2)">Step 2</button>
+                        <button @click="goForward(2)">Step 4</button></a>
+                        <br><button @click="displayOverview">Back</button>
+                        <img src="./images/spider.jpg" />
+                        <p class="info">
+                            The spider is quick and dances away from danger. As your lady hones in
+                            you've got to be nimble and play hard to get. 
+                        </p>
+                    </div>
+                    <div id="step_4" class="steps" v-if="displayStep[3].step">
+                        <label>Step 4: Contact Me!</label><br>
+                        <button @click="goBack(3)">Step 3</button>
+                        <br><button @click="displayOverview">Back</button>
+                        <div class="center">
+                            <p>
+                                Go ahead and give me a call! I'll be able to help you through each step 
+                                and many more as you transform yourself from<br>
+                                <span class="bold">single man to heart catcher!</span>
+                            </p>
+                            <a href="contact.html"><button>Let's Go!</button></a>
+                        </div>
+                    </div>
+                    <div>
+                        <textarea class="text-area" v-model="comment" @click="clearError" placeholder="comment"></textarea>
+                        <p v-if="error">{{ error }}</p>
+                        <br><button type="submit" @click="addComment">Submit</button>
+                    </div>
+                </div>
+            </div>
+            <div class="comments" v-if="!displayAll">
+                <!--<textarea class="text-area" v-model="comment" @click="clearError" placeholder="comment"></textarea>-->
+                <!--<br><p v-if="error">{{ error }}</p> -->
+                <!--<button type="submit" @click="addComment">Submit</button>-->
+                <br>
+                <h1>Comments</h1>
+                <ul v-for="object in filteredStep">
+                    <li v-for="item in object.comments" class="comments-list">
+                        {{ item.comment }} <span style="float:right">-{{ item.name }}</span><br>
+                        <span class="icons" @click.prevent="increment(item._id, 1)"><i class="far fa-thumbs-up"></i>{{ item.likes }}</span> | 
+                        <span class="icons" @click.prevent="increment(item._id, 2)"><i class="far fa-thumbs-down"></i>{{ item.dislikes }}</span>
+                        <button class="delete" @click="deleteComment(item)">X</button>
+                        <hr>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/bfc021c6e2.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
+    <script src="./javascripts/script.js"></script>
+</html>

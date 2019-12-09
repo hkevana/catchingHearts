@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        <link rel="stylesheet" href="./stylesheets/style.css" />
+        <link rel="icon" type="image/png" href="./images/favicon.png" />
+        
+        <title>Catching Hearts</title>
+    </head>
+    <body>
+        <div id="app" @keydown.esc="toggleForm">
+            <div class="nav">
+                <div class="user-info">
+                    <p v-if="user">Welcome {{user.username}}<br><a href="#" @click="logout">Logout</a></p>
+                    <p v-else><a href="#" @click="toggleForm">Register or Login</a></p>
+                </div>
+                <div>
+                    <ul>
+                        <li><a href="index.html" class="active">Home</a></li> |
+                        <li><a href="steps.html">Steps</a></li> |
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <transition v-if="showForm" name="modal">
+                <div class="modal-mask">
+                    <div class="modal-wrapper">
+                        <div class="modal-container">
+            
+                            <div class="modal-header">
+                                <h1 class="modal-title">Register or Login</h1>
+                            </div>
+                            <div class="modal-body">
+                                <p v-if="error" class="error">**{{ error }}**</p>
+                                <label>Username</label>
+                                <br>
+                                <input v-model="username">
+                                <br>
+                                <label>Password</label>
+                                <br>
+                                <input type="password" v-model="password">
+                            </div>
+                            <div class="modal-footer">
+                                <button @click="register" type="button">Register</button>
+                                <button @click="login" type="button" class="other">Login</button>
+                                <button @click="toggleForm" type="button" class="close">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </transition>
+            
+            <div class="landing">
+                <h4 class="edward">Catching</h4>
+                <h2 class="edward">Hearts</h2>
+            </div>
+            <div class="header">
+                <h3>My 4 Step Process To Catch Your Lady's Heart</h3>
+            </div>
+            <div class="quote">
+                <p> 
+                    "No matter <b>what</b><br> 
+                    No matter <b>when</b><br> 
+                    No matter <b>who </b><br>
+                    <b>any</b> man has a chance to sweep<br> 
+                    <b>any</b> woman off her feet<br>
+                    He just needs the right broom"<br>
+                    -<b>Alex Hitchens</b>-<br>
+                </p>
+                <a href="steps.html"><button>BEGIN</button></a>
+            </div>
+        </div>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
+    <script src="./javascripts/script.js"></script>
+</html>
