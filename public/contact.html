@@ -66,6 +66,18 @@
                     <li><a href="https://gmail.com"><i class="fas fa-envelope"></i></a></li>
                 </ul>
             </div>
+            <div class="comments">
+                <h1>Reviews</h1>
+                <ul v-for="object in displayStep">
+                    <li v-for="item in object.comments" class="comments-list">
+                        {{ item.comment }} <span style="float:right">-{{ item.name }}</span><br>
+                        <span class="icons" @click.prevent="increment(item._id, 1)"><i class="far fa-thumbs-up"></i>{{ item.likes }}</span> | 
+                        <span class="icons" @click.prevent="increment(item._id, 2)"><i class="far fa-thumbs-down"></i>{{ item.dislikes }}</span>
+                        <button class="delete" @click="deleteComment(item)">X</button>
+                        <hr>
+                    </li>
+                </ul>
+            </div>
         </div>
     </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>

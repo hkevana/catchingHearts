@@ -142,16 +142,12 @@
                     </div>
                     <div>
                         <textarea class="text-area" v-model="comment" @click="clearError" placeholder="comment"></textarea>
-                        <p v-if="error">{{ error }}</p>
                         <br><button type="submit" @click="addComment">Submit</button>
+                        <p v-if="error">{{ error }}</p>
                     </div>
                 </div>
             </div>
             <div class="comments" v-if="!displayAll">
-                <!--<textarea class="text-area" v-model="comment" @click="clearError" placeholder="comment"></textarea>-->
-                <!--<br><p v-if="error">{{ error }}</p> -->
-                <!--<button type="submit" @click="addComment">Submit</button>-->
-                <br>
                 <h1>Comments</h1>
                 <ul v-for="object in filteredStep">
                     <li v-for="item in object.comments" class="comments-list">
